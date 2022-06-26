@@ -7,7 +7,7 @@ on:
 
 jobs:
   install:
-    name: Test SearXNG install scripts 
+    name: Test SearXNG install scripts (lxc)
     runs-on: ubuntu-22.04
     steps:
     - name: configure network
@@ -51,7 +51,7 @@ jobs:
         sudo lxc exec test -- ip a
         sudo lxc exec test -- ip r
         echo "Ping gateway"
-        sudo lxc exec test -- ping -c1 $(sudo lxc exec test -- ip -j r | jq -r .[0].gateway) 
+        sudo lxc exec test -- ping -c1 $(sudo lxc exec test -- ip -j r | jq -r .[0].gateway)
         echo "Ping 8.8.8.8"
         sudo lxc exec test -- ping -c1 8.8.8.8
     - name: Checkout

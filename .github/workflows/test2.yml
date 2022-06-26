@@ -1,0 +1,18 @@
+name: Test
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  install:
+    name: Test SearXNG install scripts (ubuntu)
+    runs-on: ubuntu-22.04
+    steps:
+    - name: searxng.sh install all
+      run: |
+        export FORCE_TIMEOUT=0
+        whoami
+        sudo -H git clone -b searxng-install https://github.com/return42/searxng/
+        sudo -H ./searxng/utils/searxng.sh install all
