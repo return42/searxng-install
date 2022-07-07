@@ -13,6 +13,11 @@ jobs:
     - name: searxng.sh install all
       run: |
         export FORCE_TIMEOUT=0
-        whoami
-        sudo -H git clone -b searxng-install https://github.com/return42/searxng/
-        sudo -H ./searxng/utils/searxng.sh install all
+        id
+        pwd
+        mkdir searxng
+        chmod ugo+rwx searxng
+        git clone -b searxng-install https://github.com/return42/searxng/
+        ls -la /home/runner/work/searxng-install/searxng-install/searxng
+        sudo -H ./searxng/utils/searxng.sh install all || true
+        sudo -i -u "searxng" ls -d "/home/runner/work/searxng-install/searxng-install/searxng"

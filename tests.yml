@@ -50,9 +50,9 @@ jobs:
         sudo lxc exec test -- dhclient
         sudo lxc exec test -- ip a
         sudo lxc exec test -- ip r
-        echo "Ping gateway"
+        echo "ping gateway"
         sudo lxc exec test -- ping -c1 $(sudo lxc exec test -- ip -j r | jq -r .[0].gateway)
-        echo "Ping 8.8.8.8"
+        echo "ping 8.8.8.8"
         sudo lxc exec test -- ping -c1 8.8.8.8
     - name: Checkout
       uses: actions/checkout@v3
@@ -62,4 +62,5 @@ jobs:
     - name: lxc.sh build
       run: sudo -H ./utils/lxc.sh build
     - name: lxc.sh cmd ./utils/searxng.sh install all
-      run: sudo -H ./utils/lxc.sh cmd -- FORCE_TIMEOUT=0 ./utils/searxng.sh install all
+      run: |
+        sudo -H ./utils/lxc.sh cmd -- FORCE_TIMEOUT=0 ./utils/searxng.sh install all
