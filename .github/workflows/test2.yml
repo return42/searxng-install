@@ -10,7 +10,7 @@ jobs:
     name: Test SearXNG install scripts (ubuntu)
     runs-on: ubuntu-22.04
     steps:
-    - name: searxng.sh install all
+    - name: clone and install
       run: |
         export FORCE_TIMEOUT=0
         whoami
